@@ -60,5 +60,10 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: [`roboto-mono`, `muli\:400,400i,700,700i`],
+      display: "swap",
+    },
   ],
 }
