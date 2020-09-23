@@ -4,21 +4,60 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `pages`,
-        path: `${__dirname}/src/pages`
+        path: `${__dirname}/src/pages`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `posts`,
-        path: `${__dirname}/src/posts`
+        path: `${__dirname}/src/posts`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`
+        path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-prettier-eslint",
+      options: {
+        prettier: {
+          patterns: [
+            // the pattern "**/*.{js,jsx,ts,tsx}" is not used because we will rely on `eslint --fix`
+            "**/*.{css,scss,less}",
+            "**/*.{json,json5}",
+            "**/*.{graphql}",
+            "**/*.{md,mdx}",
+            "**/*.{html}",
+            "**/*.{yaml,yml}",
+          ],
+        },
+        eslint: {
+          patterns: "**/*.{js,jsx,ts,tsx}",
+          customOptions: {
+            fix: true,
+            cache: true,
+          },
+        },
+      },
+    },
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [`.md`, `.mdx`],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1200,
+            },
+          },
+        ],
       },
     },
   ],
